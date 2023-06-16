@@ -14,10 +14,11 @@ def get_citations_needed_count(URL):
     response = requests.get(URL)
     soup = BeautifulSoup(response.content, 'html.parser')
     all_citation_needed = soup.find_all('sup', class_='noprint Inline-Template Template-Fact')
-    print(len(all_citation_needed))
+    number_of_citations = len(all_citation_needed)
+    print(f"Number of citations needed in the History of Mexico page = {number_of_citations}\n")
     return len(all_citation_needed)
 
-get_citations_needed_count('https://en.wikipedia.org/wiki/Anglo-Iraqi_War')
+get_citations_needed_count('https://en.wikipedia.org/wiki/History_of_Mexico')
 
 def get_citations_needed_report(URL):
     """
@@ -39,4 +40,4 @@ def get_citations_needed_report(URL):
     print(report)
     return report
 
-get_citations_needed_report('https://en.wikipedia.org/wiki/Anglo-Iraqi_War')
+get_citations_needed_report('https://en.wikipedia.org/wiki/History_of_Mexico')
